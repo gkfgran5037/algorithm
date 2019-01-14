@@ -30,6 +30,6 @@ public class Work_day_3 {
     }
 	
 	public static void main(String[] args) {
-		
+		Work_day_2 work_day = new Work_day_2();
 	}
 }
