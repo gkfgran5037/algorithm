@@ -30,6 +30,9 @@ public class Work_day_3 {
     }
 	
 	public static void main(String[] args) {
-		
+		Work_day_3 work_day = new Work_day_3();
+		int[] progresses = {93,30,55};
+		int[] speeds = {1,30,5};
+		work_day.solution(progresses, speeds);
 	}
 }
