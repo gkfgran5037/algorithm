@@ -10,7 +10,7 @@ import java.util.StringTokenizer;
  * sw expert academy
  * self sturdy book 1 - array 1차시 - gravity
  * 
- * 90도 회전하여 상자들이 중력의 영향을 받아 낙하했을 시 낙차가 가장 큰 상자 구하여 그 낙차를 출력.
+ * 90도 회전하여 상자들이 중력의 영향을 받아 낙하했을 시 낙차가 가장 큰 상자 구하여 그 낙차를 출력. 
  * 
  * 1. case 수 (1<=T<=100)
  * 2. 가로의 길이 N(2<=N<=100), 세로의 길이 N(2<=M<=100)
