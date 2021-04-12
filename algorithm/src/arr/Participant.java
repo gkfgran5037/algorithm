@@ -34,7 +34,7 @@ public class Participant {
 				answer = key;
 				break;
 			}
-		}
+		} 
 		
 		return answer;
 	}
