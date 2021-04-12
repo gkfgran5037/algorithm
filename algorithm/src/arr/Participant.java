@@ -25,7 +25,7 @@ public class Participant {
 		
 		for (String player : participant) 
 			hm.put(player, hm.getOrDefault(player, 0)+1);
-		for (String player : completion)
+		for (String player : completion) 
 			hm.put(player, hm.get(player)-1);
 		
 		
