@@ -1,7 +1,9 @@
-package pr_hash;
+package pr_al;
 
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
+import static java.util.stream.Collectors.*;
 
 /**프로그래머스 - 위장
  * 
@@ -68,4 +70,16 @@ public class Clothes {
 		// 모두 다 안 입는 경우 제외
         return answer-1;
 	}
+	
+	
+	// 방법 3 : arrays.steam 사용
+	public int solution3(String[][] clothes) {
+		return Arrays.stream(clothes)
+				.collect(groupingBy(p->p[1], mapping(p->p[0], counting())))
+				.values()
+				.stream()
+				.collect(reducing(1L, (x,y)->x*(y+1))).intValue() -1 ;
+	}
+	
+	
 }
