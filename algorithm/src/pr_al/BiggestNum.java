@@ -28,7 +28,6 @@ public class BiggestNum {
         for (int i = 0; i < numbers.length; i++) {
 			numberArr[i] = String.valueOf(numbers[i]);
 		}
-        
         Arrays.sort(numberArr, (num1, num2) -> (num2+num1).compareTo(num1+num2));
         
         
