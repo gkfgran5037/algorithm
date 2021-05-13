@@ -1,7 +1,9 @@
 package pr_al;
 
+import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Iterator;
+import java.util.Collections;
+import java.util.List;
 
 /* 프로그래머스  H-index
  * 
@@ -14,7 +16,22 @@ import java.util.Iterator;
 */
 public class Hindex {
 	
-	// 방법 1
+	/*
+	 * 방법 1-> 오답  
+	 * 가정 ) h = n편 - 번째 <= 인용횟수  (오름차순) 
+	 * 
+	 *      _________n편_______
+	 *      |n-h편||     h편       |
+	 * 	    [0,  1,  3,  5,  6] 
+	 *          
+	 *      h=인용횟수=3
+	 * 
+	 * 놓친 조건 ) h > 0 (h는 자기자신을 포함해야 한다. 1편이상이어야 함) 
+	 * 반례 ) n=1, 인용횟수 = 0일 때 오류 발생. 위 가정을 적용시키면 안 됨.
+	 * 		citations = [0]
+	 *     h = 1 - (0번째) <= 0
+	 *     h = 1 -> 오답
+	 */    
 	public int solution(int[] citations) {
         int h = 0;
         Arrays.sort(citations);
@@ -26,7 +43,39 @@ public class Hindex {
 				break;
 			}
 		}
-        
         return h;
     }
+	
+	/* 방법 2 -> 정답
+	 * 
+	 * 가정 ) 인용 횟수 < 번째 + 1 (내림차순) -> 논문의 갯수가 인용수의 최소값보다 작은 경우
+	 * 		h = 번째
+	 * 
+	 *      _________n편_______
+	 *      |    h편      || n-h편 |
+	 *      [6,  5,  3,  1,  0] 
+	 *      
+	 *      h = 번째 = 3
+	 * 
+	 * 조건 ) h > 0
+	 * 설명 ) h번 이상 인용된 논문 h편이상 => 큰수 부터 h편으로 갯수 정해져있음 -> 내림차순으로 정렬이 값구하기 용이
+	 *      n=1, 인용횟수 = 0
+	 *      citations = [0]
+	 *      0 < 0+1
+	 *      0<1
+	 *      h=0 => 정답
+	 */ 
+	public int solution2(int[] citations) {
+		List<Integer> citationList = new ArrayList<Integer>();
+		Collections.sort(citationList);
+		Collections.reverse(citationList);
+		
+		for (int i = 0; i < citations.length; i++) {
+			if (citationList.get(i) < i+1) {
+				return i;
+			}
+		}
+		
+		return citationList.size();
+	}
 }
