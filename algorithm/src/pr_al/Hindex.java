@@ -78,4 +78,18 @@ public class Hindex {
 		
 		return citationList.size();
 	}
+	
+	public int solution3(int[] citations) {
+		Integer[] cArr = new Integer[citations.length];
+        for (int i = 0; i < citations.length; i++) {
+            cArr[i] = citations[i];
+        }
+        Arrays.sort(cArr, Collections.reverseOrder());
+        for (int i = 0; i < citations.length; i++) {
+            if (cArr[i]<i+1) {
+                return i;
+            }
+        }
+        return citations.length;
+	}
 }
