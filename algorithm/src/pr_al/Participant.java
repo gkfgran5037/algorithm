@@ -1,4 +1,4 @@
-package arr;
+package pr_al;
 
 import java.util.Arrays;
 import java.util.HashMap;
