@@ -20,7 +20,7 @@ public class ScovilleScale {
 	
 	public static void main(String[] args) {
 		int[] scoville = {1, 2, 3, 9, 10, 12};
-		System.out.println(solution(scoville, 7));
+		System.out.println(solution2(scoville, 7));
 	}
 	
 	// 방법 1 : PriorityQueue 사용
@@ -53,4 +53,27 @@ public class ScovilleScale {
         
         return answer;
     }
+	
+	// 방법 2 : PriorityQueue 사용 + queue.(0) < K
+	public static int solution2(int[] scoville, int K) {
+		int answer = 0;
+        int answerChk = 0;
+        PriorityQueue<Integer> queue = new PriorityQueue<>();
+        
+        for (Integer scScale : scoville) {
+			queue.add(scScale);
+		}
+        
+        // 최솟값이 K를 넘을 시 종료 (모든 음식이 K 이상이어야 함으로)
+        while (queue.peek() < K) {
+        	// 모든 음식의 스코빌 지수를 K 이상으로 만들 수 없는 경우에는 -1
+			if (queue.size() < 2) {
+				return -1;
+			}
+			// 가장 낮은 지수 + 두 번째로 낮은 지수
+			queue.add(queue.poll() + (queue.poll()*2));
+			answer++;
+		}
+        return answer;
+	}
 }
