@@ -19,15 +19,15 @@ import java.util.PriorityQueue;
 */
 public class Printer {
 	
-	/* 우선순위가 낮은 숫자 순
-	*  PriorityQueue priorityQueue = new PriorityQueue<>();
-	*  
-	*  우선순위가 높은 숫자 순
-	*  PriorityQueue priorityQueue = new PriorityQueue<>(Collections.reverseOrder());
-	*/
+	// 방법 1: PriorityQueue 사용
 	public int solution(int[] priorities, int location) {
         int answer = 1;
+        
+        // 우선순위가 낮은 숫자 순 : new PriorityQueue<>();
+        // 우선순위가 높은 숫자 순 : new PriorityQueue<>(Collections.reverseOrder());
         PriorityQueue<Integer> queue = new PriorityQueue<>(Collections.reverseOrder());
+        
+        // 중요도 세팅
         for (int priority : priorities) {
 			queue.offer(priority);
 		}
@@ -49,4 +49,17 @@ public class Printer {
         
         return answer;
     }
+	
+	
+	
+	
+	// 방법 2 : 
+	public int solution2(int[] priorities, int location) {
+        int answer = 0;
+        
+        
+        
+        
+        return answer;
+	}
 }
