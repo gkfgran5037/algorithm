@@ -49,17 +49,4 @@ public class Printer {
         
         return answer;
     }
-	
-	
-	
-	
-	// 방법 2 : 
-	public int solution2(int[] priorities, int location) {
-        int answer = 0;
-        
-        
-        
-        
-        return answer;
-	}
 }
