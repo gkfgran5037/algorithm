@@ -57,7 +57,6 @@ public class ScovilleScale {
 	// 방법 2 : PriorityQueue 사용 + queue.(0) < K
 	public static int solution2(int[] scoville, int K) {
 		int answer = 0;
-        int answerChk = 0;
         PriorityQueue<Integer> queue = new PriorityQueue<>();
         
         for (Integer scScale : scoville) {
