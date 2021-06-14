@@ -1,6 +1,6 @@
 package pr_al;
 
-/**  - DFS/BFS
+/** 프로그래머스  타겟 넘버 - DFS/BFS
  * 
  * 문제 설명 : n개의 음이 아닌 정수가 있습니다. 
  *         이 수를 적절히 더하거나 빼서 타겟 넘버를 만들려고 합니다. 
@@ -22,18 +22,30 @@ public class TargetNumber {
 	public int solution(int[] numbers, int target) {
         int answer = 0;
         
-        answer = bfs(numbers, target, numbers[0], 1) + bfs(numbers, target, -numbers[0], 1);
+        // sum : 0
+        // 경우1 : sum + numbers[0] = numbers[0]
+ 		// 경우2 : sum - numbers[0] = -numbers[0]
+ 		// result = 경우 1 성공여부 + 경우 2 성공여부
+        answer = dfs(numbers, target, numbers[0], 1) + dfs(numbers, target, -numbers[0], 1);
         return answer;
     }
 	
-	//
-	public int bfs(int[] numbers, int target, int sum, int i) {
+	
+	// dfs: 깊이 우선 탐색
+	// 0    +        -
+	// 1  +   -    +   -  
+	// 2 + - + -  + - + -
+ 	public int dfs(int[] numbers, int target, int sum, int i) {
 		if (i == numbers.length) {
 			return sum==target? 1 : 0;
 		}
 		int result = 0;
-		result += bfs(numbers, target, sum+numbers[i], i+1);
-		result += bfs(numbers, target, sum+numbers[i], i+1);
+		// sum : numbers를 i-1까지 + 또는 -연산한 결과 
+		// 경우1 : sum + numbers[i]
+		// 경우2 : sum - numbers[i]
+		// result = 경우 1 성공여부 + 경우 2 성공여부 
+		result += dfs(numbers, target, sum+numbers[i], i+1);
+		result += dfs(numbers, target, sum-numbers[i], i+1);
 		//
 		return result;
 	}
